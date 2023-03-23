@@ -2,7 +2,7 @@
 const express = require('express')
 const app = express()
 const { Sequelize } = require('sequelize')
-
+const bands = require('./controllers/bands_controller')
 
 // CONFIGURATION / MIDDLEWARE
 require('dotenv').config()
