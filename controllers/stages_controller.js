@@ -21,10 +21,15 @@ stages.get('/', async (req, res) => {
 
 
 //ONE
-stages.get('/:id', async (req, res) => {
+stages.get('/:name', async (req, res) => {
     try {
         const foundStage = await Stage.findOne({
-            where: { stage_id: req.params.id }
+            where: { stage_name: req.params.name },
+            include:{ 
+                model: Event, 
+                as: "events",
+                through: Stage_Event
+            },
         })
         res.status(200).json(foundStage)
     } catch (error) {
